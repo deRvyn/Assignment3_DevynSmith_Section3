@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Confirmation";
+}
+
+@model Assignment3_DevynSmith_Section3.Models.AddMoviesResponse
+
+@*confirmation page, with an if else to display different things depending on what comes up*@
+<div>
+    @if (Model.Title == "Independence Day")
+    {
+        <img src="https://static.thenounproject.com/png/158221-200.png" />
+        <br />
+        <h1>Sorry, @Model.Title will never be added to the collection! (Take that Joel!) </h1>
+    }
+    else
+    {
+        <img src="https://static.thenounproject.com/png/2880554-200.png" />
+        <br />
+        <h1>Your movie, @Model.Title submitted successfully!</h1>
+        <br />
+        <h3>Happy watching!</h3>
+    }
+
+</div>
+
+<br />
+
+<div>
+    <a asp-action="ViewMovies">Click here</a> to see the list of movies you've added
+</div>

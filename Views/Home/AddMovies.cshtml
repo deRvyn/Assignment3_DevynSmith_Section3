@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Add Movies";
+}
+
+@model Assignment3_DevynSmith_Section3.Models.AddMoviesResponse
+
+
+@*form that has all inputs and submit button*@
+<form asp-action="AddMovies" method="post">
+    <table>
+        <tr>
+            <th>
+                <label asp-for="Category">*Category:</label>
+            </th>
+            <td>
+                <select asp-for="Category">
+                    <option value="" selected class="Placeholder">Category...</option>
+                    <option value="Action/Adventure">Action/Adventure</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Family">Family</option>
+                    <option value="Horror/Suspense">Horror/Suspense</option>
+                    <option value="Miscellaneous">Miscellaneous</option>
+                    <option value="Television">Television</option>
+                    <option value="VHS">VHS</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label asp-for="Title">*Title:</label>
+            </th>
+            <td>
+                <input asp-for="Title" type="text" placeholder="Title..."/>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label asp-for="Year">*Year:</label>
+
+            </th>
+            <td>
+                <input asp-for="Year" type="number" min="1888" max="2050" placeholder="Year..."/>
+
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label asp-for="Director">*Director:</label>
+            </th>
+            <td>
+                <input asp-for="Director" type="text" placeholder="Director..."/>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label asp-for="Rating">*Rating:</label>
+            </th>
+            <td>
+                <select asp-for="Rating">
+                    <option value="" selected class="Placeholder">Rating...</option>
+                    <option value="UR">UR</option>
+                    <option value="G">G</option>
+                    <option value="PG">PG</option>
+                    <option value="PG-13">PG-13</option>
+                    <option value="R">R</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label asp-for="Edited">&nbsp Edited:</label>
+            </th>
+            <td>
+                <input asp-for="Edited" type="checkbox" value="true"/>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label asp-for="LentTo">&nbsp Lent To:</label>
+            </th>
+            <td>
+                <input asp-for="LentTo" type="text" placeholder="Lent to (if any)..."/>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label asp-for="Notes">&nbsp Notes:</label>
+            </th>
+            <td>
+                <textarea asp-for="Notes" rows="3" cols="23" maxlength="25" placeholder="Notes here (if any)..."></textarea>
+            </td>
+        </tr>
+        <tr><th><br /></th></tr>
+        <tr>
+            <th>
+                <input class="submit" type="submit" value="Submit" />
+            </th>
+        </tr>
+        <div asp-validation-summary="All"></div>    
+    </table>
+</form>

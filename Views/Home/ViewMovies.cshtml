@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "View Movies";
+}
+
+@model IEnumerable<Assignment3_DevynSmith_Section3.Models.AddMoviesResponse>
+
+@*displays the movie collection that users enter in, as well as the spreadsheet given to us by Prof Hilton*@
+<div>
+    <h1>Movie Collection</h1>
+    <br />
+    <h3>Entered Today:</h3>
+    <br />
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th><th>Title</th><th>Year</th><th>Director</th><th>Rating</th><th>Edited</th><th>Lent To:</th><th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Assignment3_DevynSmith_Section3.Models.AddMoviesResponse x in Model)
+            {
+                //if else to not display independence day
+                @if (x.Title.ToUpper().Replace(" ", string.Empty) != "INDEPENDENCEDAY")
+                {
+                    <tr>
+                        <td>@x.Category</td>
+                        <td>@x.Title</td>
+                        <td>@x.Year</td>
+                        <td>@x.Director</td>
+                        <td>@x.Rating</td>
+                        <td>@x.Edited</td>
+                        <td>@x.LentTo</td>
+                        <td>@x.Notes</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <br />
+    <h3>Overall Collection:</h3>
+    <br />
+    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRyE0sbJozaGmn1d-2p283sw7kSrLDkiWbwctKVHNak8CRgtt4kg8Vylbi1mo6A-e7qp2askfC8CNkf/pubhtml?gid=1400278809&amp;single=true&amp;widget=true&amp;headers=false" style="width:100%; height:700px;"></iframe>
+</div>

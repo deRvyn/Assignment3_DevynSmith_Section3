@@ -1,6 +1,8 @@
+using Assignment9_DevynSmith_Section3.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -9,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Assignment3_DevynSmith_Section3
+namespace Assignment9_DevynSmith_Section3
 {
     public class Startup
     {
@@ -24,6 +26,14 @@ namespace Assignment3_DevynSmith_Section3
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //adding services to get the database to work
+            services.AddDbContext<MovieDbContext>(options =>
+            {
+                options.UseSqlite(Configuration["ConnectionStrings:MovieConnection"]);
+            });
+
+            services.AddScoped<IMovieRepository, EFMovieRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

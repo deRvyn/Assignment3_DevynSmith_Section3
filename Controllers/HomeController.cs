@@ -1,4 +1,4 @@
-﻿using Assignment3_DevynSmith_Section3.Models;
+﻿using Assignment9_DevynSmith_Section3.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,15 +7,19 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Assignment3_DevynSmith_Section3.Controllers
+namespace Assignment9_DevynSmith_Section3.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private IMovieRepository _repository;
+
+        //constructor of the logger and repo
+        public HomeController(ILogger<HomeController> logger, IMovieRepository repository)
         {
             _logger = logger;
+            _repository = repository;
         }
 
         //Home page view
@@ -39,12 +43,12 @@ namespace Assignment3_DevynSmith_Section3.Controllers
 
         //addmovies post view
         [HttpPost]
-        public IActionResult AddMovies(AddMoviesResponse movieResponse)
+        public IActionResult AddMovies(Movie movie)
         {
             if (ModelState.IsValid)
             {
-                TempStorage.AddMovie(movieResponse);
-                return View("Confirmation", movieResponse);
+                
+                return View("Confirmation", movie);
             }
             else
             {
@@ -55,7 +59,7 @@ namespace Assignment3_DevynSmith_Section3.Controllers
         //view movies view
         public IActionResult ViewMovies()
         {
-            return View(TempStorage.Movies);
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

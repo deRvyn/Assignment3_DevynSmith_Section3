@@ -1,6 +1,6 @@
 using System;
 
-namespace Assignment3_DevynSmith_Section3.Models
+namespace Assignment9_DevynSmith_Section3.Models
 {
     public class ErrorViewModel
     {

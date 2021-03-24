@@ -2,7 +2,7 @@
     ViewBag.Title = "View Movies";
 }
 
-@model IEnumerable<Assignment3_DevynSmith_Section3.Models.AddMoviesResponse>
+@model IEnumerable<Assignment9_DevynSmith_Section3.Models.Movie>
 
 @*displays the movie collection that users enter in, as well as the spreadsheet given to us by Prof Hilton*@
 <div>
@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (Assignment3_DevynSmith_Section3.Models.AddMoviesResponse x in Model)
+            @foreach (Assignment9_DevynSmith_Section3.Models.Movie x in Model)
             {
                 //if else to not display independence day
                 @if (x.Title.ToUpper().Replace(" ", string.Empty) != "INDEPENDENCEDAY")
